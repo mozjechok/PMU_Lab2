@@ -9,9 +9,9 @@ data class User(
     var id: Int = -1,
     var login: String = "admin",
     var password: String = "admin",
-    var FIO: String = "МИД",
-    var Unik: String = "БГУИР",
-    var Grade: String = "Исит(в ИИ) 3 курс",
-    var BirthDate: LocalDate = LocalDate.of( 2002, 8 , 10 ),
+    var fio: String = "МИД",
+    var unik: String = "БГУИР",
+    var grade: String = "Исит(в ИИ) 3 курс",
+    var birthdate: String = "10.02.2002",
 ) : Serializable
 

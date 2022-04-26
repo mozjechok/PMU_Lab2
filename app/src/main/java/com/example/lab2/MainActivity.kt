@@ -5,6 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
+import com.google.gson.Gson
+import io.github.rybalkinsd.kohttp.dsl.httpPost
+import io.github.rybalkinsd.kohttp.ext.asString
+import io.github.rybalkinsd.kohttp.ext.url
+import org.json.JSONObject
 import java.time.format.DateTimeFormatter
 
 class MainActivity : AppCompatActivity() {
@@ -30,7 +35,7 @@ class MainActivity : AppCompatActivity() {
     {
         if (arguments != null) {
             user =  arguments.getSerializable(User::class.java.simpleName) as User
-            /*val login = user.login
+            val login = user.login
             val password = user.password
 
             val response = httpPost {
@@ -51,28 +56,28 @@ class MainActivity : AppCompatActivity() {
             val obj = JSONObject(response.asString())
             if (obj["result"].toString() == "" || obj["result"].toString()  == "[]") {
                 val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
                 startActivity(intent)
             } else {
                 var gson = Gson()
-                var user = gson.fromJson(obj["result"].toString(), User::class.java)
-            }*/
+                user = gson.fromJson(obj["result"].toString(), User::class.java)
+            }
         }
 
         val loginEdit = findViewById<EditText>(R.id.MainLoginEdit)
         loginEdit.setText(user.login)
 
         val fioEdit = findViewById<EditText>(R.id.MainFIOEdit)
-        fioEdit.setText(user.FIO)
+        fioEdit.setText(user.fio)
 
         val unikEdit = findViewById<EditText>(R.id.MainUnikEdit)
-        unikEdit.setText(user.Unik)
+        unikEdit.setText(user.unik)
 
         val dateEdit = findViewById<EditText>(R.id.MainDateEdit)
-        dateEdit.setText(user.BirthDate.format(DateTimeFormatter.ofPattern("dd.MM.yyyy")))
+        dateEdit.setText(user.birthdate)
 
         val gradeEdit = findViewById<EditText>(R.id.MainGradeEdit)
-        gradeEdit.setText(user.Grade)
+        gradeEdit.setText(user.grade)
 
         val editBtn = findViewById<Button>(R.id.EditBtn)
         editBtn.setOnClickListener {

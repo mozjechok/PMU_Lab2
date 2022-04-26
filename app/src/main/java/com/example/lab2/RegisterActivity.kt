@@ -19,14 +19,14 @@ class RegisterActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-        val loginBtn = findViewById<Button>(R.id.LoginBtn)
+        val loginBtn = findViewById<Button>(R.id.RegLoginBtn)
         loginBtn.setOnClickListener {
-            val intent = Intent(this, RegisterActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
             startActivity(intent)
         }
 
-        val registerBtn = findViewById<Button>(R.id.RegisterBtn)
+        val registerBtn = findViewById<Button>(R.id.RegRegisterBtn)
         registerBtn.setOnClickListener {
             findViewById<TextView>(R.id.RegisterErrorText).text = ""
 
@@ -36,8 +36,6 @@ class RegisterActivity : AppCompatActivity() {
 
                 val login = findViewById<EditText>(R.id.LoginEdit).text.toString()
                 val password = findViewById<EditText>(R.id.PasswordEdit).text.toString()
-                val email = findViewById<EditText>(R.id.EmailEdit).text.toString()
-                val phone = findViewById<EditText>(R.id.PhoneEdit).text.toString()
 
                 val response = httpPost {
                     url("http://192.168.0.112:8000/api/v1/newUser")
@@ -47,8 +45,6 @@ class RegisterActivity : AppCompatActivity() {
                         json {
                             "login" to login
                             "password" to password
-                            "email" to email
-                            "phone" to phone
                         }
                     }
 

@@ -36,7 +36,7 @@ class LoginActivity : AppCompatActivity() {
                 val login = findViewById<EditText>(R.id.LoginEdit).text.toString()
                 val password = findViewById<EditText>(R.id.PasswordEdit).text.toString()
 
-                /*val response = httpPost {
+                val response = httpPost {
                     url("http://192.168.0.112:8000/api/v1/getUser")
 
                     body {
@@ -56,16 +56,16 @@ class LoginActivity : AppCompatActivity() {
                     findViewById<TextView>(R.id.LoginErrorText).text = "неверный логин/пароль"
                 } else {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
                     var user: User = User()
                     user.login = login
                     user.password = password
                     intent.putExtra(User::class.java.simpleName, user)
                     startActivity(intent)
-                }*/
+                }
 
-                if(login == "admin" && password == "admin")
+                /*if(login == "admin" && password == "admin")
                 {
                     val intent = Intent(this@LoginActivity, MainActivity::class.java)
                     intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
@@ -75,7 +75,7 @@ class LoginActivity : AppCompatActivity() {
                     user.password = password
                     intent.putExtra(User::class.java.simpleName, user)
                     startActivity(intent)
-                }
+                }*/
             }
         }
     }
