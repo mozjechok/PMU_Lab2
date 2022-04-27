@@ -19,25 +19,21 @@ class LoginActivity : AppCompatActivity() {
         loginBtn.setOnClickListener {
             findViewById<TextView>(R.id.LoginErrorText).text = ""
 
-            lifecycleScope.launch {
-                val policy = StrictMode.ThreadPolicy.Builder().permitAll().build()
-                StrictMode.setThreadPolicy(policy)
+            val login = findViewById<EditText>(R.id.LoginEdit).text.toString()
+            val password = findViewById<EditText>(R.id.PasswordEdit).text.toString()
 
-                val login = findViewById<EditText>(R.id.LoginEdit).text.toString()
-                val password = findViewById<EditText>(R.id.PasswordEdit).text.toString()
+            if(login == "max" && password == "max")
+            {
+                val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                //intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
 
-                if(login == "admin" && password == "admin")
-                {
-                    val intent = Intent(this@LoginActivity, MainActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
-
-                    var user: User = User()
-                    user.login = login
-                    user.password = password
-                    intent.putExtra(User::class.java.simpleName, user)
-                    startActivity(intent)
-                }
+                var user: User = User()
+                user.login = login
+                user.password = password
+                intent.putExtra(User::class.java.simpleName, user)
+                startActivity(intent)
             }
+
         }
     }
 }

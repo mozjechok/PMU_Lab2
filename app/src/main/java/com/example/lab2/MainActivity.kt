@@ -28,36 +28,8 @@ class MainActivity : AppCompatActivity() {
 
     fun Init(arguments: Bundle?)
     {
-        if (arguments != null) {
+        if (arguments != null)
             user =  arguments.getSerializable(User::class.java.simpleName) as User
-            /*val login = user.login
-            val password = user.password
-
-            val response = httpPost {
-                url("http://192.168.0.112:8000/api/v1/getUser")
-
-                body {
-                    json {
-                        "login" to login
-                        "password" to password
-                    }
-                }
-
-                header {
-                    "Content-Type" to "application/json"
-                }
-            }
-
-            val obj = JSONObject(response.asString())
-            if (obj["result"].toString() == "" || obj["result"].toString()  == "[]") {
-                val intent = Intent(this@MainActivity, LoginActivity::class.java)
-                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
-                startActivity(intent)
-            } else {
-                var gson = Gson()
-                var user = gson.fromJson(obj["result"].toString(), User::class.java)
-            }*/
-        }
 
         val loginEdit = findViewById<EditText>(R.id.MainLoginEdit)
         loginEdit.setText(user.login)
