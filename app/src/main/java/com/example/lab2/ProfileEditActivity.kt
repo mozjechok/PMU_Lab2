@@ -32,7 +32,7 @@ class ProfileEditActivity : AppCompatActivity() {
             val password = user.password
 
             val response = httpPost {
-                url("http://192.168.0.112:8000/api/v1/getUser")
+                url(url + "getUser")
 
                 body {
                     json {
@@ -117,7 +117,7 @@ class ProfileEditActivity : AppCompatActivity() {
 
 
             val response = httpPost {
-                url("http://192.168.0.112:8000/api/v1/updateUser")
+                url(url + "updateUser")
 
                 body {
                     json {

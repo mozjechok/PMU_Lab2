@@ -37,7 +37,7 @@ class LoginActivity : AppCompatActivity() {
                 val password = findViewById<EditText>(R.id.PasswordEdit).text.toString()
 
                 val response = httpPost {
-                    url("http://192.168.0.112:8000/api/v1/getUser")
+                    url(url + "getUser")
 
                     body {
                         json {

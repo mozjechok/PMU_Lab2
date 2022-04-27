@@ -4,6 +4,8 @@ import java.sql.*
 import java.time.LocalDate
 import java.io.Serializable;
 
+var url = "http://192.168.0.112:8000/api/v1/";
+
 
 data class User(
     var id: Int = -1,

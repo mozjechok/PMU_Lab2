@@ -39,7 +39,7 @@ class MainActivity : AppCompatActivity() {
             val password = user.password
 
             val response = httpPost {
-                url("http://192.168.0.112:8000/api/v1/getUser")
+                url(url + "getUser")
 
                 body {
                     json {
